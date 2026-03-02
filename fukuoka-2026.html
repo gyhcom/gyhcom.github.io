@@ -60,6 +60,23 @@
       text-decoration: none;
     }
 
+    a[href],
+    button,
+    select,
+    [role="button"] {
+      cursor: pointer;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    [role="button"]:focus-visible {
+      outline: 2px solid #13110f;
+      outline-offset: 2px;
+      border-radius: 8px;
+      box-shadow: 0 0 0 3px rgba(19, 17, 15, 0.16);
+    }
+
     .cursor-ring,
     .cursor-dot {
       position: fixed;
@@ -74,7 +91,8 @@
       height: 28px;
       border: 1px solid rgba(0, 0, 0, 0.34);
       border-radius: 999px;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(1);
+      transition: opacity 140ms ease, transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
     }
 
     .cursor-dot {
@@ -82,12 +100,23 @@
       height: 7px;
       background: #111;
       border-radius: 999px;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(1);
+      transition: opacity 140ms ease, transform 120ms ease;
     }
 
     body.cursor-active .cursor-ring,
     body.cursor-active .cursor-dot {
       opacity: 1;
+    }
+
+    body.cursor-link .cursor-ring {
+      transform: translate(-50%, -50%) scale(1.38);
+      border-color: rgba(0, 0, 0, 0.62);
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    body.cursor-link .cursor-dot {
+      transform: translate(-50%, -50%) scale(1.18);
     }
 
     .progress-track {
@@ -393,6 +422,24 @@
       gap: 6px;
     }
 
+    .detail-card a,
+    .special a {
+      text-decoration: underline;
+      text-decoration-color: rgba(19, 17, 15, 0.34);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.4px;
+      transition: color 140ms ease, text-decoration-color 140ms ease, background-color 140ms ease;
+      border-radius: 4px;
+      padding: 1px 2px;
+    }
+
+    .detail-card a:hover,
+    .special a:hover {
+      color: #15110e;
+      text-decoration-color: currentColor;
+      background: rgba(19, 17, 15, 0.08);
+    }
+
     .road-layout {
       margin-top: 14px;
       display: grid;
@@ -492,11 +539,24 @@
       color: #3e3932;
       background: #f9f7f3;
       font-weight: 700;
-      transition: transform 160ms ease;
+      transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .assist .links a::after {
+      content: "↗";
+      font-size: 11px;
+      color: #7b7368;
+      flex: 0 0 auto;
     }
 
     .assist .links a:hover {
       transform: translateX(2px);
+      border-color: #968c80;
+      background: #fff;
     }
 
     .board {
@@ -647,12 +707,14 @@
       font-weight: 700;
       background: #fff;
       color: #423e38;
-      transition: transform 160ms ease, border-color 160ms ease;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+      cursor: pointer;
     }
 
     .chip:hover {
       transform: translateY(-1px);
       border-color: #8f867a;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     }
 
     .chip.food { border-color: #f1c3a8; color: #9a3f15; background: #fff1e8; }
@@ -1597,12 +1659,19 @@
         let rx = 0;
         let ry = 0;
 
+        const interactiveSelector = "a[href], button, select, [role='button'], input, textarea";
+
         const move = (event) => {
           x = event.clientX;
           y = event.clientY;
           document.body.classList.add("cursor-active");
           dot.style.left = `${x}px`;
           dot.style.top = `${y}px`;
+
+          const linkTarget = event.target && event.target.closest
+            ? event.target.closest(interactiveSelector)
+            : null;
+          document.body.classList.toggle("cursor-link", Boolean(linkTarget));
         };
 
         const loop = () => {
@@ -1614,7 +1683,10 @@
         };
 
         window.addEventListener("mousemove", move);
-        window.addEventListener("mouseleave", () => document.body.classList.remove("cursor-active"));
+        window.addEventListener("mouseleave", () => {
+          document.body.classList.remove("cursor-active");
+          document.body.classList.remove("cursor-link");
+        });
         loop();
       }
     })();
