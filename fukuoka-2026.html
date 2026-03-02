@@ -47,7 +47,7 @@
       font-family: "SUIT", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       line-height: 1.5;
       min-height: 100vh;
-      cursor: none;
+      cursor: auto;
       overflow-x: hidden;
     }
 
@@ -55,9 +55,40 @@
       cursor: auto;
     }
 
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled a[href],
+    body.custom-cursor-enabled button,
+    body.custom-cursor-enabled select,
+    body.custom-cursor-enabled [role="button"],
+    body.custom-cursor-enabled input,
+    body.custom-cursor-enabled textarea {
+      cursor: none;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    a[target="_blank"]:not(.chip):not(.map-btn)::after {
+      content: " ↗";
+      font-size: 0.8em;
+      font-weight: 800;
+      color: #736b61;
+      white-space: nowrap;
+    }
+
+    a[href^="#"]:not(.no-link-mark)::after {
+      content: " ↓";
+      font-size: 0.8em;
+      font-weight: 800;
+      color: #736b61;
+      white-space: nowrap;
+    }
+
+    .track-pill::after {
+      justify-self: end;
+      align-self: end;
     }
 
     a[href],
@@ -1085,6 +1116,14 @@
         font-size: 14px;
       }
 
+      .day-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .day-dot-grid {
+        min-height: 0;
+      }
+
       .board {
         padding: 12px;
       }
@@ -1182,13 +1221,13 @@
   </div>
 
   <nav class="quick-jump" aria-label="빠른 이동">
-    <a href="#overview" data-target="overview"><span>Overview</span></a>
-    <a href="#rental" data-target="rental"><span>Rental</span></a>
-    <a href="#day1" data-target="day1"><span>Day 1</span></a>
-    <a href="#day2" data-target="day2"><span>Day 2</span></a>
-    <a href="#day3" data-target="day3"><span>Day 3</span></a>
-    <a href="#day4" data-target="day4"><span>Day 4</span></a>
-    <a href="#food-cafe" data-target="food-cafe"><span>Food/Cafe</span></a>
+    <a class="no-link-mark" href="#overview" data-target="overview"><span>Overview</span></a>
+    <a class="no-link-mark" href="#rental" data-target="rental"><span>Rental</span></a>
+    <a class="no-link-mark" href="#day1" data-target="day1"><span>Day 1</span></a>
+    <a class="no-link-mark" href="#day2" data-target="day2"><span>Day 2</span></a>
+    <a class="no-link-mark" href="#day3" data-target="day3"><span>Day 3</span></a>
+    <a class="no-link-mark" href="#day4" data-target="day4"><span>Day 4</span></a>
+    <a class="no-link-mark" href="#food-cafe" data-target="food-cafe"><span>Food/Cafe</span></a>
   </nav>
 
   <div class="shell">
@@ -1206,6 +1245,7 @@
         <div class="sponsor-badge" aria-label="친구 크레딧">
           <span class="sponsor-main">메인 스폰서: 서유리</span>
           <span class="sponsor-sub">우리의 역할: 잘 놀고 추억 많이 남기기 😎</span>
+          <span class="sponsor-sub">일정 상시 변경 가능</span>
         </div>
         <h1>
           Fukuoka
@@ -1365,9 +1405,9 @@
           </div>
           <div class="special">출발 당일에는 <strong>총액, 면책조건, 픽업/반납 시각, 국제터미널 위치</strong>만 체크하면 됩니다.</div>
           <div class="rental-gallery">
-            <a href="./rental-car-01.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-01.jpeg" alt="렌트카 보험 및 추가 서비스 정보" /></a>
-            <a href="./rental-car-02.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-02.jpeg" alt="렌트카 차량 및 픽업 반납 정보 1" /></a>
-            <a href="./rental-car-03.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-03.jpeg" alt="렌트카 차량 및 픽업 반납 정보 2" /></a>
+            <a href="./rental-car-01.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-01.jpeg" alt="렌트카 보험 및 추가 서비스 정보" loading="lazy" decoding="async" /></a>
+            <a href="./rental-car-02.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-02.jpeg" alt="렌트카 차량 및 픽업 반납 정보 1" loading="lazy" decoding="async" /></a>
+            <a href="./rental-car-03.jpeg" target="_blank" rel="noopener noreferrer"><img src="./rental-car-03.jpeg" alt="렌트카 차량 및 픽업 반납 정보 2" loading="lazy" decoding="async" /></a>
           </div>
         </section>
 
@@ -1680,6 +1720,7 @@
 
       const dot = document.getElementById("cursorDot");
       if (!prefersReducedMotion && dot && window.matchMedia("(pointer:fine)").matches) {
+        document.body.classList.add("custom-cursor-enabled");
         const move = (event) => {
           document.body.classList.add("cursor-active");
           dot.style.left = `${event.clientX}px`;
@@ -1690,6 +1731,8 @@
         window.addEventListener("mouseleave", () => {
           document.body.classList.remove("cursor-active");
         });
+      } else {
+        document.body.classList.remove("custom-cursor-enabled");
       }
     })();
   </script>
