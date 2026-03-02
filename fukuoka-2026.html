@@ -77,46 +77,21 @@
       box-shadow: 0 0 0 3px rgba(19, 17, 15, 0.16);
     }
 
-    .cursor-ring,
     .cursor-dot {
       position: fixed;
       z-index: 2000;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 140ms ease;
-    }
-
-    .cursor-ring {
-      width: 28px;
-      height: 28px;
-      border: 1px solid rgba(0, 0, 0, 0.34);
-      border-radius: 999px;
-      transform: translate(-50%, -50%) scale(1);
-      transition: opacity 140ms ease, transform 120ms ease, border-color 120ms ease, background-color 120ms ease;
-    }
-
-    .cursor-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       background: #111;
       border-radius: 999px;
-      transform: translate(-50%, -50%) scale(1);
-      transition: opacity 140ms ease, transform 120ms ease;
+      transform: translate(-50%, -50%);
+      transition: opacity 120ms ease;
     }
 
-    body.cursor-active .cursor-ring,
     body.cursor-active .cursor-dot {
       opacity: 1;
-    }
-
-    body.cursor-link .cursor-ring {
-      transform: translate(-50%, -50%) scale(1.38);
-      border-color: rgba(0, 0, 0, 0.62);
-      background: rgba(0, 0, 0, 0.08);
-    }
-
-    body.cursor-link .cursor-dot {
-      transform: translate(-50%, -50%) scale(1.18);
     }
 
     .progress-track {
@@ -267,30 +242,30 @@
 
     .sponsor-badge {
       display: inline-grid;
-      gap: 3px;
-      margin: 0 0 14px;
-      padding: 8px 11px;
-      border-radius: 12px;
-      border: 1px solid #dac9b4;
-      background: linear-gradient(145deg, #fff9ef, #fff0dc);
-      box-shadow: 0 8px 18px rgba(122, 82, 31, 0.12);
-      max-width: 390px;
+      gap: 6px;
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid #d8c1a4;
+      background: linear-gradient(145deg, #fff9ed, #ffeecf);
+      box-shadow: 0 12px 26px rgba(122, 82, 31, 0.16);
+      max-width: 520px;
     }
 
     .sponsor-badge .sponsor-main {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.09em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #6c4622;
     }
 
     .sponsor-badge .sponsor-sub {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 800;
       color: #473b2f;
-      line-height: 1.35;
+      line-height: 1.4;
     }
 
     .hero-left h1 {
@@ -1063,7 +1038,6 @@
         cursor: auto;
       }
 
-      .cursor-ring,
       .cursor-dot,
       .progress-track {
         display: none;
@@ -1087,6 +1061,15 @@
 
       .hero-right {
         grid-template-columns: 1fr;
+      }
+
+      .sponsor-badge {
+        max-width: none;
+        width: 100%;
+      }
+
+      .sponsor-badge .sponsor-sub {
+        font-size: 14px;
       }
 
       .board {
@@ -1161,7 +1144,6 @@
         cursor: auto;
       }
 
-      .cursor-ring,
       .cursor-dot,
       .progress-track {
         display: none;
@@ -1180,7 +1162,6 @@
   </style>
 </head>
 <body>
-  <div class="cursor-ring" id="cursorRing"></div>
   <div class="cursor-dot" id="cursorDot"></div>
 
   <div class="progress-track" aria-hidden="true">
@@ -1683,43 +1664,18 @@
         fades.forEach((node) => node.classList.add("show"));
       }
 
-      const ring = document.getElementById("cursorRing");
       const dot = document.getElementById("cursorDot");
-      if (!prefersReducedMotion && ring && dot && window.matchMedia("(pointer:fine)").matches) {
-        let x = 0;
-        let y = 0;
-        let rx = 0;
-        let ry = 0;
-
-        const interactiveSelector = "a[href], button, select, [role='button'], input, textarea";
-
+      if (!prefersReducedMotion && dot && window.matchMedia("(pointer:fine)").matches) {
         const move = (event) => {
-          x = event.clientX;
-          y = event.clientY;
           document.body.classList.add("cursor-active");
-          dot.style.left = `${x}px`;
-          dot.style.top = `${y}px`;
-
-          const linkTarget = event.target && event.target.closest
-            ? event.target.closest(interactiveSelector)
-            : null;
-          document.body.classList.toggle("cursor-link", Boolean(linkTarget));
-        };
-
-        const loop = () => {
-          rx += (x - rx) * 0.2;
-          ry += (y - ry) * 0.2;
-          ring.style.left = `${rx}px`;
-          ring.style.top = `${ry}px`;
-          requestAnimationFrame(loop);
+          dot.style.left = `${event.clientX}px`;
+          dot.style.top = `${event.clientY}px`;
         };
 
         window.addEventListener("mousemove", move);
         window.addEventListener("mouseleave", () => {
           document.body.classList.remove("cursor-active");
-          document.body.classList.remove("cursor-link");
         });
-        loop();
       }
     })();
   </script>
