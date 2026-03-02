@@ -505,7 +505,45 @@
       gap: 16px;
     }
 
+    .day-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 24;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 8px;
+      border: 1px solid #d7cec3;
+      border-radius: 12px;
+      background: rgba(249, 245, 239, 0.95);
+      backdrop-filter: blur(4px);
+    }
+
+    .day-nav a {
+      border: 1px solid #d3c9bc;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #4d463e;
+      background: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
+    }
+
+    .day-nav a:hover,
+    .day-nav a.active {
+      transform: translateY(-1px);
+      background: #1c1a17;
+      border-color: #1c1a17;
+      color: #f7f3ed;
+    }
+
     .section {
+      scroll-margin-top: 82px;
       border: 1px solid #dad2c7;
       border-radius: 16px;
       background: #fefdfb;
@@ -640,6 +678,9 @@
     }
 
     .timeline-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
       background: #f4efe8;
       border-bottom: 1px solid #ddd3c6;
       font-size: 12px;
@@ -659,6 +700,7 @@
       align-items: center;
       font-size: 12px;
       color: #2e2b27;
+      line-height: 1.38;
     }
 
     .timeline-row > div:last-child,
@@ -865,8 +907,8 @@
 
     .fade-up {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 380ms ease, transform 380ms ease;
+      transform: translateY(12px);
+      transition: opacity 260ms ease, transform 260ms ease;
     }
 
     .fade-up.show {
@@ -961,13 +1003,62 @@
         padding: 12px;
       }
 
-      .timeline {
+      .day-nav {
+        top: 8px;
         overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 8px 6px;
       }
 
-      .timeline-head,
+      .day-nav a {
+        flex: 0 0 auto;
+      }
+
+      .timeline {
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .timeline-head {
+        display: none;
+      }
+
       .timeline-row {
-        min-width: 860px;
+        grid-template-columns: 1fr;
+        border-bottom: 1px solid #e8dfd3;
+      }
+
+      .timeline-row > div {
+        min-height: auto;
+        display: block;
+        border-right: 0;
+        border-bottom: 1px dashed #ece4d9;
+        padding: 8px 10px;
+      }
+
+      .timeline-row > div::before {
+        display: block;
+        margin-bottom: 3px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: #6c655b;
+      }
+
+      .timeline-row > div:nth-child(1)::before { content: "시간"; }
+      .timeline-row > div:nth-child(2)::before { content: "일정"; }
+      .timeline-row > div:nth-child(3)::before { content: "포인트"; }
+      .timeline-row > div:nth-child(4)::before { content: "위치"; }
+      .timeline-row > div:nth-child(5)::before { content: "비고"; }
+
+      .timeline-row > div:last-child {
+        border-bottom: 0;
+      }
+
+      .timeline .actions {
+        margin-top: 4px;
       }
 
       .food-cafe-controls {
@@ -1106,6 +1197,16 @@
       </aside>
 
       <main class="board">
+        <nav class="day-nav" aria-label="일정 탭">
+          <a href="#overview" data-target="overview">Overview</a>
+          <a href="#rental" data-target="rental">Rental</a>
+          <a href="#day1" data-target="day1">Day 1</a>
+          <a href="#day2" data-target="day2">Day 2</a>
+          <a href="#day3" data-target="day3">Day 3</a>
+          <a href="#day4" data-target="day4">Day 4</a>
+          <a href="#food-cafe" data-target="food-cafe">Food/Cafe</a>
+        </nav>
+
         <section class="section fade-up" id="overview">
           <span class="section-anchor" id="overview-anchor"></span>
           <h2>Overview</h2>
@@ -1414,6 +1515,7 @@
 
       const progressBar = document.getElementById("progressBar");
       const jumpLinks = Array.from(document.querySelectorAll(".quick-jump a"));
+      const dayNavLinks = Array.from(document.querySelectorAll(".day-nav a"));
       const sections = ["overview", "rental", "day1", "day2", "day3", "day4", "food-cafe"]
         .map((id) => document.getElementById(id))
         .filter(Boolean);
@@ -1431,7 +1533,7 @@
           }
         }
 
-        jumpLinks.forEach((link) => {
+        [...jumpLinks, ...dayNavLinks].forEach((link) => {
           const isActive = link.dataset.target === activeId;
           link.classList.toggle("active", isActive);
         });
