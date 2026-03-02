@@ -368,7 +368,9 @@
       min-height: 95px;
       display: grid;
       align-content: space-between;
-      transition: transform 180ms ease, border-color 180ms ease;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+      color: inherit;
+      text-decoration: none;
     }
 
     .track-pill strong {
@@ -385,9 +387,20 @@
       line-height: 1.3;
     }
 
-    .track-pill:hover {
+    .track-pill:hover,
+    .track-pill:focus-visible {
       transform: translateY(-2px);
-      border-color: #b8afa4;
+      border-color: #8c8275;
+      background: #fffdf9;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .phone-jump-note {
+      margin: 8px 0 0;
+      font-size: 11px;
+      color: #645d53;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     .hero-right {
@@ -1218,23 +1231,24 @@
           <p class="phone-meta">청주 → 후쿠오카 렌트카 동선 핵심만 카드로 정리</p>
           <div class="day-dot-grid">
             <div class="day-track">
-              <div class="track-pill">
+              <a class="track-pill" href="#day1" aria-label="Day 1 상세 일정으로 이동">
                 <strong>Day 1</strong>
                 <span>공항 조식 → 도스 아울렛 → 아프리칸 사파리 → 유후인</span>
-              </div>
-              <div class="track-pill">
+              </a>
+              <a class="track-pill" href="#day2" aria-label="Day 2 상세 일정으로 이동">
                 <strong>Day 2</strong>
                 <span>유후인 출발 → 모메다마치 → 히타 숙소 휴식</span>
-              </div>
-              <div class="track-pill">
+              </a>
+              <a class="track-pill" href="#day3" aria-label="Day 3 상세 일정으로 이동">
                 <strong>Day 3</strong>
                 <span>히타 → 다자이후 → 하카타 체크인</span>
-              </div>
-              <div class="track-pill">
+              </a>
+              <a class="track-pill" href="#day4" aria-label="Day 4 상세 일정으로 이동">
                 <strong>Day 4</strong>
                 <span>벚꽃 산책 → 점심 → 렌트 반납 → 출국</span>
-              </div>
+              </a>
             </div>
+            <p class="phone-jump-note">Day 카드를 누르면 아래 상세 일정으로 바로 이동합니다.</p>
           </div>
         </article>
       </div>
