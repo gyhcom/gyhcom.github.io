@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit PDF Support</title>
+  <meta name="description" content="Support information for Submit PDF." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: rgba(15, 23, 42, 0.08);
+      --accent: #2563eb;
+      --soft: #eff6ff;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 24%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .shell {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2 {
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact {
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: var(--soft);
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="nav">
+      <a href="/submit-pdf/">Submit PDF</a>
+      <a href="/submit-pdf/privacy/">Privacy</a>
+    </div>
+
+    <section class="card">
+      <h1>Submit PDF Support</h1>
+      <p>
+        If you need help with scanning, PDF export, or purchase restoration,
+        contact support by email.
+      </p>
+      <p>
+        Submit PDF is published by GyhLabs.
+      </p>
+      <div class="contact">
+        <strong>Email:</strong>
+        <a href="mailto:konise@naver.com">konise@naver.com</a>
+      </div>
+      <p style="margin-top: 14px;">
+        Current support channel: email only.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Common topics</h2>
+      <ul>
+        <li>Camera scan or photo import issues</li>
+        <li>PDF export or share issues</li>
+        <li>Purchase and Restore Purchases issues</li>
+        <li>Questions about recent documents stored on device</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>FAQ</h2>
+
+      <div class="faq-item">
+        <strong>How do I create a PDF?</strong>
+        <p>
+          Open Submit PDF, tap <em>Scan Document</em> or <em>Import Photos</em>,
+          adjust the pages, then continue to export and share.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Why can I not export more PDFs?</strong>
+        <p>
+          Free use includes a limited number of exports. Submit PDF Pro unlocks
+          unlimited submission-ready PDF exports.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <strong>How do I restore a previous purchase?</strong>
+        <p>
+          Open the Pro screen from the Home screen and tap
+          <em>Restore Purchases</em>.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Where are my scanned documents stored?</strong>
+        <p>
+          Submit PDF stores exported documents locally on your device until you
+          remove them from the app or from your device storage.
+        </p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
