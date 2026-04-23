@@ -165,6 +165,80 @@
       gap: 16px;
     }
 
+    .spotlight {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .spotlight-copy h2 {
+      margin: 0 0 12px;
+      max-width: 11ch;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+    }
+
+    .spotlight-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.02rem;
+      max-width: 62ch;
+    }
+
+    .spotlight-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .flow-card {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background:
+        radial-gradient(circle at top right, rgba(110, 168, 255, 0.18), transparent 36%),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(148, 163, 184, 0.11);
+    }
+
+    .flow-number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #07111f;
+      font-weight: 900;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.94rem;
+    }
+
     .product {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
@@ -258,6 +332,10 @@
         grid-template-columns: 1fr;
       }
 
+      .spotlight {
+        grid-template-columns: 1fr;
+      }
+
       .product-links {
         justify-content: flex-start;
       }
@@ -288,6 +366,53 @@
         <div class="chip">Apple Developer Program</div>
         <div class="chip">Organization</div>
         <div class="chip">Based in South Korea</div>
+      </div>
+    </section>
+
+    <section class="section spotlight">
+      <div class="spotlight-copy">
+        <span class="eyebrow">Now preparing for launch</span>
+        <h2>ShotBox cleans up screenshots after capture.</h2>
+        <p>
+          ShotBox is a macOS menu bar app for people who take screenshots often.
+          It does not replace the built-in screenshot shortcut. Instead, it
+          watches the folder you choose, catches new screenshots, helps rename
+          them, and files them into the right place.
+        </p>
+        <p>
+          The first release is intentionally narrow: watch, rename, quick move,
+          restore, and reveal in Finder. No account, no cloud sync, and no
+          backend service.
+        </p>
+        <div class="spotlight-actions">
+          <a class="action primary" href="./shotbox/">Open ShotBox</a>
+          <a class="action" href="./shotbox/support/">Support</a>
+          <a class="action" href="./shotbox/privacy/">Privacy</a>
+        </div>
+      </div>
+
+      <div class="flow-card" aria-label="ShotBox workflow">
+        <div class="flow-step">
+          <span class="flow-number">1</span>
+          <div>
+            <strong>Watch your screenshot folder</strong>
+            <span>Choose Desktop or another folder where macOS saves captures.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">2</span>
+          <div>
+            <strong>Rename before the file gets lost</strong>
+            <span>Use a cleaner filename while the screenshot is still fresh.</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="flow-number">3</span>
+          <div>
+            <strong>Move or restore safely</strong>
+            <span>Quick-move captures into folders and restore them if needed.</span>
+          </div>
+        </div>
       </div>
     </section>
 
