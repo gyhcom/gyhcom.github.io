@@ -162,6 +162,11 @@
       background: rgba(255, 255, 255, 0.72);
     }
 
+    .button.disabled {
+      cursor: default;
+      box-shadow: 0 0 0 1px rgba(6, 20, 11, 0.1) inset;
+    }
+
     .button:hover {
       text-decoration: none;
     }
@@ -330,7 +335,8 @@
           you choose.
         </p>
         <div class="cta-row">
-          <a class="button primary" href="/shotbox/support/">Support</a>
+          <span class="button primary disabled" aria-disabled="true">Coming to Mac App Store</span>
+          <a class="button secondary" href="/shotbox/support/">Support</a>
           <a class="button secondary" href="/shotbox/privacy/">Privacy Policy</a>
         </div>
       </article>

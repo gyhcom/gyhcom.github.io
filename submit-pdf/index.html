@@ -148,6 +148,11 @@
       border-color: var(--line);
     }
 
+    .button.disabled {
+      cursor: default;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08) inset;
+    }
+
     .proof {
       padding: 28px;
       display: grid;
@@ -276,7 +281,8 @@
           urgent paperwork that needs a clean, submission-ready result.
         </p>
         <div class="cta-row">
-          <a class="button primary" href="/submit-pdf/support/">Support</a>
+          <span class="button primary disabled" aria-disabled="true">In development</span>
+          <a class="button secondary" href="/submit-pdf/support/">Support</a>
           <a class="button secondary" href="/submit-pdf/privacy/">Privacy Policy</a>
         </div>
       </article>
@@ -298,8 +304,8 @@
             <span>Combine multiple pages into a single exportable document.</span>
           </div>
           <div class="metric">
-            <strong>Pro unlock</strong>
-            <span>Submit PDF Pro unlocks unlimited submission-ready PDF exports.</span>
+            <strong>Focused release</strong>
+            <span>Built around a small scan, clean, export workflow before adding extras.</span>
           </div>
         </div>
       </aside>
