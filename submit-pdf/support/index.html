@@ -4,17 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Submit PDF Support</title>
-  <meta name="description" content="Support information for Submit PDF." />
+  <meta
+    name="description"
+    content="Support information for Submit PDF, an iOS app for turning document photos into clean PDFs."
+  />
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f5f7fb;
       --panel: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: rgba(15, 23, 42, 0.08);
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #dbe3ef;
       --accent: #2563eb;
-      --soft: #eff6ff;
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --accent-soft: #dbeafe;
     }
 
     * {
@@ -23,150 +25,169 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 24%),
-        var(--bg);
       color: var(--text);
-    }
-
-    .shell {
-      width: min(860px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 48px;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+      background:
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 34%),
+        linear-gradient(180deg, #eef4ff 0%, var(--bg) 52%, #f8fafc 100%);
     }
 
     a {
       color: var(--accent);
+      font-weight: 700;
       text-decoration: none;
-      font-weight: 600;
     }
 
-    .card {
-      background: var(--panel);
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      width: min(880px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar,
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      margin-top: 30px;
+      padding: 36px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-      margin-bottom: 18px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
     }
 
-    h1, h2 {
-      margin: 0 0 12px;
-      letter-spacing: -0.03em;
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
     }
 
     p {
-      margin: 0 0 12px;
       color: var(--muted);
       line-height: 1.7;
     }
 
-    .contact {
-      display: inline-block;
-      padding: 14px 18px;
-      border-radius: 16px;
-      background: var(--soft);
-      color: var(--text);
-      margin-top: 6px;
+    .section {
+      margin-top: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
     }
 
-    .faq-item + .faq-item {
-      margin-top: 22px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
     }
 
     ul {
       margin: 0;
-      padding-left: 18px;
+      padding-left: 20px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.8;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="nav">
-      <a href="/submit-pdf/">Submit PDF</a>
-      <a href="/submit-pdf/privacy/">Privacy</a>
-    </div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">GyhLabs</div>
+      <nav>
+        <a href="/submit-pdf/">Submit PDF</a>
+        <a href="/submit-pdf/privacy/">Privacy</a>
+        <a href="mailto:gyeonho@gmail.com">Contact</a>
+      </nav>
+    </header>
 
-    <section class="card">
+    <section class="hero">
+      <div class="eyebrow">Support</div>
       <h1>Submit PDF Support</h1>
       <p>
-        If you need help with scanning, PDF export, or purchase restoration,
-        contact support by email.
+        Submit PDF turns document photos into clean PDFs for applications, forms,
+        receipts, and everyday paperwork. If you need help, contact us by email.
       </p>
       <p>
-        Submit PDF is published by GyhLabs.
-      </p>
-      <div class="contact">
-        <strong>Email:</strong>
-        <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a>
-      </div>
-      <p style="margin-top: 14px;">
-        Current support channel: email only.
+        Email: <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a>
       </p>
     </section>
 
-    <section class="card">
-      <h2>Common topics</h2>
+    <section class="section">
+      <h2>Common Topics</h2>
       <ul>
-        <li>Camera scan or photo import issues</li>
-        <li>PDF export or share issues</li>
-        <li>Purchase and Restore Purchases issues</li>
-        <li>Questions about recent documents stored on device</li>
+        <li>Scanning or importing document photos</li>
+        <li>Improving page readability before PDF export</li>
+        <li>Exporting, sharing, or finding a recent PDF</li>
+        <li>Submit PDF Pro purchase and restore issues</li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>FAQ</h2>
-
-      <div class="faq-item">
-        <strong>How do I create a PDF?</strong>
-        <p>
-          Open Submit PDF, tap <em>Scan Document</em> or <em>Import Photos</em>,
-          adjust the pages, then continue to export and share.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <strong>Why can I not export more PDFs?</strong>
-        <p>
-          Free use includes a limited number of exports. Submit PDF Pro unlocks
-          unlimited submission-ready PDF exports.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <strong>How do I restore a previous purchase?</strong>
-        <p>
-          Open the Pro screen from the Home screen and tap
-          <em>Restore Purchases</em>.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <strong>Where are my scanned documents stored?</strong>
-        <p>
-          Submit PDF stores exported documents locally on your device until you
-          remove them from the app or from your device storage.
-        </p>
-      </div>
+    <section class="section">
+      <h2>Purchase Restore</h2>
+      <p>
+        If you already purchased Submit PDF Pro, open the Pro screen in the app
+        and tap Restore Purchases. Make sure you are signed in with the same
+        Apple ID used for the original purchase.
+      </p>
     </section>
-  </div>
+
+    <section class="section">
+      <h2>Contact Details</h2>
+      <p>
+        Developer: GyhLabs, South Korea<br />
+        Support email: <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a>
+      </p>
+    </section>
+
+    <footer class="footer">
+      <span>Last updated: April 23, 2026</span>
+      <a href="/">Back to GyhLabs</a>
+    </footer>
+  </main>
 </body>
 </html>

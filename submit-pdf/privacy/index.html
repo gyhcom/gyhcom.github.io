@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Submit PDF Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for Submit PDF." />
+  <meta
+    name="description"
+    content="Privacy Policy for Submit PDF, an iOS document-to-PDF scanner app."
+  />
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f5f7fb;
       --panel: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: rgba(15, 23, 42, 0.08);
+      --text: #111827;
+      --muted: #4b5563;
+      --line: #dbe3ef;
       --accent: #2563eb;
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --accent-soft: #dbeafe;
     }
 
     * {
@@ -22,150 +25,187 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
       color: var(--text);
-    }
-
-    .shell {
-      width: min(900px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 48px;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.14), transparent 34%),
+        linear-gradient(180deg, #eef4ff 0%, var(--bg) 52%, #f8fafc 100%);
     }
 
     a {
       color: var(--accent);
+      font-weight: 700;
       text-decoration: none;
-      font-weight: 600;
     }
 
-    .card {
-      background: var(--panel);
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      width: min(880px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .topbar,
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      margin-top: 30px;
+      padding: 36px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-      margin-bottom: 18px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
     }
 
-    h1, h2 {
-      margin: 0 0 12px;
-      letter-spacing: -0.03em;
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
     }
 
-    p, li {
+    p {
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.7;
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
     }
 
     ul {
       margin: 0;
-      padding-left: 18px;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.8;
     }
 
-    .meta {
+    .footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="nav">
-      <a href="/submit-pdf/">Submit PDF</a>
-      <a href="/submit-pdf/support/">Support</a>
-    </div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">GyhLabs</div>
+      <nav>
+        <a href="/submit-pdf/">Submit PDF</a>
+        <a href="/submit-pdf/support/">Support</a>
+        <a href="mailto:gyeonho@gmail.com">Contact</a>
+      </nav>
+    </header>
 
-    <section class="card">
-      <h1>Privacy Policy</h1>
-      <div class="meta">Effective date: April 13, 2026</div>
+    <section class="hero">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Submit PDF Privacy Policy</h1>
       <p>
-        Submit PDF is developed by GyhLabs. This Privacy Policy explains what
-        information the app uses and how that information is handled.
+        Submit PDF is designed as an offline-first document utility. The app
+        helps you scan or import document photos, improve readability, create
+        PDFs, and share them from your device.
+      </p>
+      <p>Last updated: April 23, 2026</p>
+    </section>
+
+    <section class="section">
+      <h2>Documents and Photos</h2>
+      <p>
+        Your scanned documents, imported photos, generated PDFs, and recent
+        document history are processed and stored locally on your device. Submit
+        PDF does not upload your documents or photos to a GyhLabs server.
       </p>
     </section>
 
-    <section class="card">
-      <h2>1. Information the app uses</h2>
+    <section class="section">
+      <h2>Purchases</h2>
+      <p>
+        Submit PDF Pro purchases are processed through Apple in-app purchase.
+        The app uses RevenueCat to manage purchase status and entitlement
+        restoration. RevenueCat may process purchase-related identifiers and
+        receipt information needed to provide the Pro unlock.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Support Email</h2>
+      <p>
+        If you contact support by email, we receive the email address and message
+        content you choose to send. We use that information only to respond to
+        your request.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Analytics and Accounts</h2>
       <ul>
-        <li>Camera access when you choose to scan a document.</li>
-        <li>Photo library access when you choose to import photos.</li>
-        <li>Files you create in the app, such as exported PDFs and recent document records.</li>
-        <li>Purchase-related data required to process and restore in-app purchases.</li>
+        <li>No account or sign-in is required to use Submit PDF.</li>
+        <li>The app does not include cloud sync.</li>
+        <li>The app does not use a GyhLabs backend to store your documents.</li>
+        <li>Basic in-app diagnostics may be logged locally by the operating system.</li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>2. How document data is handled</h2>
+    <section class="section">
+      <h2>Contact</h2>
       <p>
-        Submit PDF is designed to work primarily on-device. Scanned pages,
-        imported images, generated PDFs, and recent document records are stored
-        locally on your device unless you choose to share them through Apple's
-        system share sheet.
-      </p>
-      <p>
-        Submit PDF does not require an account and does not provide cloud sync in
-        the current version of the app.
+        If you have privacy questions, contact
+        <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a>.
       </p>
     </section>
 
-    <section class="card">
-      <h2>3. In-app purchases</h2>
-      <p>
-        Submit PDF uses Apple's in-app purchase infrastructure and RevenueCat to
-        manage purchase state, entitlement status, and restoration of purchases.
-        Purchase-related information may be processed by Apple and RevenueCat for
-        these purposes.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>4. Sharing</h2>
-      <p>
-        When you use the share feature, the selected PDF is handed off through
-        Apple's share sheet to the destination you choose. Handling of shared
-        files by third-party apps or services is governed by those services'
-        policies.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>5. Data retention</h2>
-      <p>
-        Documents and recent history remain on your device until you delete them
-        from the app or remove the app and its data from your device.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>6. Your choices</h2>
-      <ul>
-        <li>You can deny camera or photo access in iOS Settings.</li>
-        <li>You can delete exported files and recent documents from your device.</li>
-        <li>You can contact support with privacy-related questions.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>7. Contact</h2>
-      <p>
-        If you have questions about this Privacy Policy, contact:
-        <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a>
-      </p>
-    </section>
-  </div>
+    <footer class="footer">
+      <span>GyhLabs, South Korea</span>
+      <a href="/">Back to GyhLabs</a>
+    </footer>
+  </main>
 </body>
 </html>
