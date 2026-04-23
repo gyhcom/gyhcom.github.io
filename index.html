@@ -160,93 +160,33 @@
       line-height: 1.7;
     }
 
+    .principle-grid,
     .product-list {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
     }
 
-    .spotlight {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    .spotlight-copy h2 {
-      margin: 0 0 12px;
-      max-width: 11ch;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
-    }
-
-    .spotlight-copy p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 1.02rem;
-      max-width: 62ch;
-    }
-
-    .spotlight-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .flow-card {
-      display: grid;
-      gap: 12px;
-      padding: 22px;
-      border-radius: 24px;
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      background:
-        radial-gradient(circle at top right, rgba(110, 168, 255, 0.18), transparent 36%),
-        rgba(255, 255, 255, 0.04);
-    }
-
-    .flow-step {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid rgba(148, 163, 184, 0.11);
-    }
-
-    .flow-number {
-      display: inline-grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #07111f;
-      font-weight: 900;
-    }
-
-    .flow-step strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .flow-step span {
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.94rem;
-    }
-
+    .principle,
     .product {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
       padding: 22px;
       border-radius: 22px;
       border: 1px solid rgba(148, 163, 184, 0.14);
-      background: rgba(255, 255, 255, 0.03);
+      background:
+        radial-gradient(circle at top right, rgba(110, 168, 255, 0.1), transparent 34%),
+        rgba(255, 255, 255, 0.03);
+    }
+
+    .product {
+      min-height: 310px;
+    }
+
+    .principle {
+      min-height: 180px;
     }
 
     .product h3 {
@@ -255,7 +195,14 @@
       letter-spacing: -0.03em;
     }
 
-    .product p {
+    .principle h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .product p,
+    .principle p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
@@ -282,9 +229,23 @@
       font-weight: 700;
     }
 
+    .status {
+      align-self: flex-start;
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .product-links {
       align-content: start;
-      justify-content: flex-end;
+      justify-content: flex-start;
+      margin-top: auto;
     }
 
     .action {
@@ -328,14 +289,6 @@
         padding: 24px;
       }
 
-      .product {
-        grid-template-columns: 1fr;
-      }
-
-      .spotlight {
-        grid-template-columns: 1fr;
-      }
-
       .product-links {
         justify-content: flex-start;
       }
@@ -357,10 +310,10 @@
       <div class="eyebrow">Focused software products</div>
       <h1>Apps and tools built with less friction.</h1>
       <p class="hero-copy">
-        GyhLabs builds utility-first software for people who need to get work
-        done quickly. Each product lives on its own path, so more apps and SaaS
-        products can be added cleanly over time without changing the overall site
-        structure.
+        GyhLabs is a small product shelf for focused apps and lightweight SaaS
+        experiments. The goal is simple: when someone lands here, they should
+        quickly see what exists, what each product solves, and which one is worth
+        opening.
       </p>
       <div class="hero-meta">
         <div class="chip">Apple Developer Program</div>
@@ -369,68 +322,23 @@
       </div>
     </section>
 
-    <section class="section spotlight">
-      <div class="spotlight-copy">
-        <span class="eyebrow">Now preparing for launch</span>
-        <h2>ShotBox cleans up screenshots after capture.</h2>
-        <p>
-          ShotBox is a macOS menu bar app for people who take screenshots often.
-          It does not replace the built-in screenshot shortcut. Instead, it
-          watches the folder you choose, catches new screenshots, helps rename
-          them, and files them into the right place.
-        </p>
-        <p>
-          The first release is intentionally narrow: watch, rename, quick move,
-          restore, and reveal in Finder. No account, no cloud sync, and no
-          backend service.
-        </p>
-        <div class="spotlight-actions">
-          <a class="action primary" href="./shotbox/">Open ShotBox</a>
-          <a class="action" href="./shotbox/support/">Support</a>
-          <a class="action" href="./shotbox/privacy/">Privacy</a>
-        </div>
-      </div>
-
-      <div class="flow-card" aria-label="ShotBox workflow">
-        <div class="flow-step">
-          <span class="flow-number">1</span>
-          <div>
-            <strong>Watch your screenshot folder</strong>
-            <span>Choose Desktop or another folder where macOS saves captures.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-number">2</span>
-          <div>
-            <strong>Rename before the file gets lost</strong>
-            <span>Use a cleaner filename while the screenshot is still fresh.</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <span class="flow-number">3</span>
-          <div>
-            <strong>Move or restore safely</strong>
-            <span>Quick-move captures into folders and restore them if needed.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section">
       <div class="section-header">
         <div>
-          <h2>Products</h2>
-          <p>Current apps and product pages published under the GyhLabs brand.</p>
+          <h2>Product Shelf</h2>
+          <p>Small products, each focused on one everyday workflow.</p>
         </div>
       </div>
 
       <div class="product-list">
         <article class="product">
           <div>
+            <span class="status">macOS Utility</span>
             <h3>ShotBox</h3>
             <p>
-              macOS menu bar utility that watches new screenshots, suggests clean
-              filenames, and moves captures into folders you choose.
+              A macOS menu bar utility for people who take screenshots often.
+              It watches a folder, catches new captures, helps rename them, and
+              files them into folders you choose.
             </p>
             <div class="product-tags">
               <span class="tag">macOS</span>
@@ -447,10 +355,12 @@
 
         <article class="product">
           <div>
+            <span class="status">iOS Utility</span>
             <h3>Submit PDF</h3>
             <p>
-              Submission-first PDF scanner for job applications, school forms,
-              receipts, and other document workflows that need clean output fast.
+              A submission-first document scanner for turning document photos
+              into clean PDFs for applications, forms, receipts, and
+              administrative paperwork.
             </p>
             <div class="product-tags">
               <span class="tag">iOS</span>
@@ -462,6 +372,55 @@
             <a class="action primary" href="./submit-pdf/">Open</a>
             <a class="action" href="./submit-pdf/support/">Support</a>
             <a class="action" href="./submit-pdf/privacy/">Privacy</a>
+          </div>
+        </article>
+
+        <article class="product">
+          <div>
+            <span class="status">Future Products</span>
+            <h3>Next Experiments</h3>
+            <p>
+              New apps and SaaS experiments will be added here with the same
+              format: what it does, who it is for, and why it is useful.
+            </p>
+            <div class="product-tags">
+              <span class="tag">Apps</span>
+              <span class="tag">SaaS</span>
+              <span class="tag">Utilities</span>
+            </div>
+          </div>
+          <div class="product-links">
+            <a class="action" href="mailto:gyeonho@gmail.com">Contact</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>How Products Fit Here</h2>
+          <p>A simple rule for future additions, so the homepage stays balanced.</p>
+        </div>
+      </div>
+
+      <div class="principle-grid">
+        <article class="principle">
+          <div>
+            <h3>One clear job</h3>
+            <p>Each product should be understandable in a few seconds.</p>
+          </div>
+        </article>
+        <article class="principle">
+          <div>
+            <h3>Small surface area</h3>
+            <p>Focused utilities and SaaS products are easier to try and trust.</p>
+          </div>
+        </article>
+        <article class="principle">
+          <div>
+            <h3>Equal presentation</h3>
+            <p>No single app has to dominate the homepage as the shelf grows.</p>
           </div>
         </article>
       </div>
