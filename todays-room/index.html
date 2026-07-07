@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Today's Room | GyhLabs</title>
+  <meta
+    name="description"
+    content="Today's Room is a calm iOS focus timer designed to stay open on your desk."
+  />
+  <style>
+    :root {
+      --bg: #fbf7ef;
+      --paper: rgba(255, 253, 247, 0.92);
+      --text: #26211c;
+      --muted: #71685d;
+      --line: rgba(196, 176, 132, 0.32);
+      --sage: #8fa58b;
+      --gold: #c9a85f;
+      --tea: #d8b391;
+      --shadow: 0 24px 70px rgba(74, 58, 38, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(143, 165, 139, 0.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(201, 168, 95, 0.16), transparent 28%),
+        linear-gradient(180deg, #fffdf7 0%, var(--bg) 52%, #f7efe3 100%);
+    }
+
+    a {
+      color: #7d6a35;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 52px;
+    }
+
+    .topbar,
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 30px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-copy {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(143, 165, 139, 0.16);
+      color: #63795f;
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      max-width: 10ch;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .lead {
+      max-width: 58ch;
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: #fffdf7;
+    }
+
+    .button.secondary {
+      background: #fffdf7;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .room-preview {
+      padding: 28px;
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+      background:
+        linear-gradient(160deg, rgba(143, 165, 139, 0.13), rgba(255, 253, 247, 0.9)),
+        var(--paper);
+    }
+
+    .phone {
+      width: min(230px, 100%);
+      aspect-ratio: 9 / 19;
+      padding: 24px 18px;
+      border-radius: 34px;
+      border: 1px solid rgba(201, 168, 95, 0.36);
+      background:
+        radial-gradient(circle at 70% 24%, rgba(201, 168, 95, 0.18), transparent 28%),
+        linear-gradient(180deg, #fffdf7, #f8f1e7);
+      box-shadow: 0 24px 60px rgba(74, 58, 38, 0.16);
+    }
+
+    .phone-kicker {
+      margin-bottom: 22px;
+      color: var(--sage);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-align: center;
+    }
+
+    .phone-title {
+      margin-bottom: 36px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .timer-card {
+      min-height: 210px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background: rgba(255, 253, 247, 0.78);
+      border: 1px solid rgba(201, 168, 95, 0.22);
+    }
+
+    .timer {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: -0.05em;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .section-card {
+      padding: 24px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(143, 165, 139, 0.13);
+      color: #63795f;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 760px) {
+      .hero,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .room-preview {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">GyhLabs</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/todays-room/support/">Support</a>
+        <a href="/todays-room/privacy/">Privacy</a>
+        <a href="mailto:gyeonho@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card hero-copy">
+        <div class="eyebrow">iOS focus timer</div>
+        <h1>Today's Room</h1>
+        <p class="lead">
+          A calm focus timer designed to stay open on your desk. Choose three
+          focus items, start a quiet room, and work with less noise.
+        </p>
+        <div class="cta-row">
+          <a class="button primary" href="mailto:gyeonho@gmail.com">Contact support</a>
+          <a class="button secondary" href="/todays-room/privacy/">Privacy policy</a>
+        </div>
+        <div class="tag-row">
+          <span class="tag">No account</span>
+          <span class="tag">Local-first</span>
+          <span class="tag">Paid app</span>
+        </div>
+      </div>
+
+      <div class="card room-preview">
+        <div class="phone" aria-label="Today's Room timer preview">
+          <div class="phone-kicker">FOREST</div>
+          <div class="phone-title">Light passing<br />through leaves.</div>
+          <div class="timer-card">
+            <div>
+              <div class="timer">25:00</div>
+              <p style="margin: 8px 0 0; text-align: center; font-size: 0.72rem; letter-spacing: 0.18em;">DEEP FOCUS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <article class="card section-card">
+        <h2>Three focus items</h2>
+        <p>
+          Keep today's work small and visible. Today's Room is built around a
+          short desk agenda, not a complicated task system.
+        </p>
+      </article>
+
+      <article class="card section-card">
+        <h2>Quiet room themes</h2>
+        <p>
+          Forest, Ocean, and Tea Room give each session a calm visual mood that
+          can stay on screen during deep focus.
+        </p>
+      </article>
+
+      <article class="card section-card">
+        <h2>Desk-friendly timer</h2>
+        <p>
+          Use portrait or landscape mode and keep the screen awake while the
+          timer sits beside your keyboard.
+        </p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>GyhLabs, South Korea</span>
+      <span>Support: <a href="mailto:gyeonho@gmail.com">gyeonho@gmail.com</a></span>
+    </footer>
+  </main>
+</body>
+</html>
